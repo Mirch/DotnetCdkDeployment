@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lambdas.Shared
+namespace Messages.Models
 {
     public class Message
     {

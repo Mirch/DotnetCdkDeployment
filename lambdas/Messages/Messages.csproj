@@ -16,4 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Lambdas.Shared\Lambdas.Shared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

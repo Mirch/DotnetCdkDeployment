@@ -1,26 +1,29 @@
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Lambdas.Shared;
+using Messages.Models;
 using Newtonsoft.Json;
 
-// Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
-[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace PostMessage
+namespace Messages
 {
-    public class Function
+    public class PostMessageFunction
     {
 
         public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
         {
             var message = JsonConvert.DeserializeObject<Message>(request.Body);
 
+            var responseBody = new Message
+            {
+                From = "Post Lambda",
+                Content = $"Hello, {message.From}!"
+            };
+
             var response = new APIGatewayProxyResponse
             {
                 StatusCode = 200,
-                Body = $"Received \"{message.Content}\" from {message.From}.",
+                Body = JsonConvert.SerializeObject(responseBody),
                 Headers = new Dictionary<string, string>
                 {
                     { "Content-Type", "application/json" },

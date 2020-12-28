@@ -6,7 +6,8 @@ namespace Infrastructure
     {
         internal InfrastructureStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            new MessagesServices(this, id);
+            new MessagesService(this, "MessagesService");
+            new CalculatorService(this, "CalculatorService");
         }
     }
 }
