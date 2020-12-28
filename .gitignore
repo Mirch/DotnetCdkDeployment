@@ -2,6 +2,9 @@
 .cdk.staging
 cdk.out
 
+# macOS specific
+**/.DS_store
+
 # Created by https://www.gitignore.io/api/csharp
 
 ### Csharp ###
